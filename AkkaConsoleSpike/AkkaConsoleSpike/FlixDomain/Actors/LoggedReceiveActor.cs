@@ -21,5 +21,11 @@ namespace AkkaConsoleSpike.FlixDomain.Actors
         {
             _log.Trace("{0} PostStop: {1}", this.GetType().Name, Context.Self.Path);
         }
+
+        protected override void PreRestart(Exception reason, object message)
+        {
+            _log.Error(reason);
+            _log.Trace("{0} PreRestart: {1}", this.GetType().Name, Context.Self.Path);
+        }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using Akka.Actor;
+using AkkaConsoleSpike.FlixDomain.Exceptions;
 using AkkaConsoleSpike.FlixDomain.Messages;
 using System;
 using System.Collections.Generic;
@@ -25,9 +26,20 @@ namespace AkkaConsoleSpike.FlixDomain.Actors
                 _moviePlayCounts.Add(message.Movie, 0);
             }
 
-            _moviePlayCounts[message.Movie] += 1;
+            _moviePlayCounts[message.Movie] += 1;           
+            var plays = _moviePlayCounts[message.Movie];
 
-            _log.Info("{0} has been watched {1} time(s)", message.Movie, _moviePlayCounts[message.Movie]);
+            if (plays > 3)
+            {
+                throw new MovieLicenseExpiredException();
+            }
+
+            if (_moviePlayCounts.Count > 3)
+            {
+                throw new MovieStoreCorruptedException();
+            }
+
+            _log.Info("{0} has been watched {1} time(s)", message.Movie, plays);
         }
     }
 }

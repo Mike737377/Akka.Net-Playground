@@ -84,6 +84,8 @@
     <Compile Include="FlixDomain\Actors\UserActor.cs" />
     <Compile Include="FlixDomain\Actors\UserCoordinatorActor.cs" />
     <Compile Include="FlixDomain\Example.cs" />
+    <Compile Include="FlixDomain\Exceptions\MovieLicenseExpiredException.cs" />
+    <Compile Include="FlixDomain\Exceptions\MovieStoreCorruptedException.cs" />
     <Compile Include="FlixDomain\Messages\IncrementPlayCountMessage.cs" />
     <Compile Include="FlixDomain\Messages\PlayMovieMessage.cs" />
     <Compile Include="FlixDomain\Messages\StopMovieMessage.cs" />
