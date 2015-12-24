@@ -31,7 +31,7 @@ namespace AkkaConsoleSpike.FlixDomain
             _quit = true;
         }
 
-        public void Run()
+        public void Run(bool interactive = true)
         {
             _log.Trace("Starting actor system");
             using (_actorSystem = ActorSystem.Create("FlixSystem"))
@@ -41,27 +41,35 @@ namespace AkkaConsoleSpike.FlixDomain
 
                 Thread.Sleep(1000);
 
-                PrintHelp();
-
-                do
+                if (interactive)
                 {
-                    Thread.Sleep(250);
-                    Console.WriteLine();
-                    Console.WriteLine();
+                    PrintHelp();
 
-                    Console.Write("Command: ");
-                    var command = Console.ReadLine().Trim();
-
-                    if (_commands.ContainsKey(command))
+                    do
                     {
-                        _commands[command]();
-                    }
-                    else
-                    {
-                        Console.WriteLine("Unknown command");
-                    }                   
+                        Thread.Sleep(250);
+                        Console.WriteLine();
+                        Console.WriteLine();
 
-                } while(!_quit);
+                        Console.Write("Command: ");
+                        var command = Console.ReadLine().Trim();
+
+                        if (_commands.ContainsKey(command))
+                        {
+                            _commands[command]();
+                        }
+                        else
+                        {
+                            Console.WriteLine("Unknown command");
+                        }
+
+                    } while (!_quit);
+                }
+                else
+                {
+                    Console.WriteLine("Press enter to quit");
+                    Console.ReadLine();
+                }
 
                 _log.Trace("Shutting down actor system");
                 _actorSystem.Shutdown();

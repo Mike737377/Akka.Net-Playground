@@ -4,15 +4,16 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{8DF93480-0680-4090-8B15-C5B4ED076AA4}</ProjectGuid>
+    <ProjectGuid>{0B00B061-30ED-47A7-B83E-9F32306D04A5}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>AkkaConsoleSpike</RootNamespace>
-    <AssemblyName>AkkaConsoleSpike</AssemblyName>
+    <RootNamespace>AkkaConsoleSpike.Remote</RootNamespace>
+    <AssemblyName>AkkaConsoleSpike.Remote</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -22,15 +23,13 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-  </PropertyGroup>
-  <PropertyGroup>
-    <StartupObject />
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Akka, Version=1.0.5.14, Culture=neutral, processorArchitecture=MSIL">
@@ -39,10 +38,6 @@
     </Reference>
     <Reference Include="Akka.DI.Core, Version=1.0.5.14, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Akka.DI.Core.1.0.5\lib\net45\Akka.DI.Core.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="Akka.DI.StructureMap, Version=1.0.5.14, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Akka.DI.StructureMap.1.0.5\lib\net45\Akka.DI.StructureMap.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Akka.Logger.NLog, Version=1.0.5.14, Culture=neutral, processorArchitecture=MSIL">
@@ -90,24 +85,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Actors\LoosePlaybackActor.cs" />
-    <Compile Include="Actors\PlaybackActor.cs" />
-    <Compile Include="Actors\StatefulPlaybackActor.cs" />
-    <Compile Include="LooseDemo.cs" />
-    <Compile Include="Messages\PlayMovieMessage.cs" />
-    <Compile Include="Messages\StopMovieMessage.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="StatefulDemo.cs" />
-    <Compile Include="StrongDemo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="App.config">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="CHANGES.txt" />
-    <Content Include="licenses\license.txt" />
-    <Content Include="licenses\protoc-license.txt" />
+    <None Include="App.config" />
     <Content Include="nlog.config">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -115,6 +97,11 @@
     <None Include="protos\google\protobuf\csharp_options.proto" />
     <None Include="protos\google\protobuf\descriptor.proto" />
     <None Include="protos\tutorial\addressbook.proto" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="CHANGES.txt" />
+    <Content Include="licenses\license.txt" />
+    <Content Include="licenses\protoc-license.txt" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\AkkaConsoleSpike.Common\AkkaConsoleSpike.Common.csproj">

@@ -1,0 +1,17 @@
+﻿using AkkaConsoleSpike.FlixDomain;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace AkkaConsoleSpike.Remote
+{
+    public class Program
+    {
+        public static void Main(string[] args)
+        {
+            new Example().Run(false);
+        }
+    }
+}
